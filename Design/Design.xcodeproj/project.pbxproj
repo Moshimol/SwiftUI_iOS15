@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09DB1F52280C567F00BA986A /* HexagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB1F51280C567F00BA986A /* HexagonView.swift */; };
+		09DB1F54280C5B8B00BA986A /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB1F53280C5B8B00BA986A /* BlobView.swift */; };
 		09E27DA8280B2728001109CD /* DesignApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E27DA7280B2728001109CD /* DesignApp.swift */; };
 		09E27DAA280B2728001109CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E27DA9280B2728001109CD /* ContentView.swift */; };
 		09E27DAC280B272B001109CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E27DAB280B272B001109CD /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09DB1F51280C567F00BA986A /* HexagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonView.swift; sourceTree = "<group>"; };
+		09DB1F53280C5B8B00BA986A /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
 		09E27DA4280B2728001109CD /* Design.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Design.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E27DA7280B2728001109CD /* DesignApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignApp.swift; sourceTree = "<group>"; };
 		09E27DA9280B2728001109CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 				09E27DA7280B2728001109CD /* DesignApp.swift */,
 				09E27DA9280B2728001109CD /* ContentView.swift */,
 				09E27DBB280C0EBF001109CD /* AccountView.swift */,
+				09DB1F51280C567F00BA986A /* HexagonView.swift */,
+				09DB1F53280C5B8B00BA986A /* BlobView.swift */,
 				09E27DB7280C0728001109CD /* Styles.swift */,
 				09E27DAB280B272B001109CD /* Assets.xcassets */,
 				09E27DAD280B272B001109CD /* Preview Content */,
@@ -146,6 +152,8 @@
 				09E27DBC280C0EBF001109CD /* AccountView.swift in Sources */,
 				09E27DB8280C0728001109CD /* Styles.swift in Sources */,
 				09E27DAA280B2728001109CD /* ContentView.swift in Sources */,
+				09DB1F54280C5B8B00BA986A /* BlobView.swift in Sources */,
+				09DB1F52280C567F00BA986A /* HexagonView.swift in Sources */,
 				09E27DA8280B2728001109CD /* DesignApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
