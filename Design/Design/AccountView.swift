@@ -39,6 +39,11 @@ struct AccountView: View {
                     HexagonView()
                         .offset(x: -50, y: -100)
                 )
+                .background(
+                    BlobView()
+                        .offset(x: 200, y: 0)
+                        .scaleEffect(0.6)
+                )
             Text("Lu Shitong")
                 .font(.title.weight(.semibold))
             HStack {
