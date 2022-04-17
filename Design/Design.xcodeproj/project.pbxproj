@@ -12,6 +12,7 @@
 		09E27DAC280B272B001109CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E27DAB280B272B001109CD /* Assets.xcassets */; };
 		09E27DAF280B272B001109CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E27DAE280B272B001109CD /* Preview Assets.xcassets */; };
 		09E27DB8280C0728001109CD /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E27DB7280C0728001109CD /* Styles.swift */; };
+		09E27DBC280C0EBF001109CD /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E27DBB280C0EBF001109CD /* AccountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		09E27DAB280B272B001109CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09E27DAE280B272B001109CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		09E27DB7280C0728001109CD /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		09E27DBB280C0EBF001109CD /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				09E27DA7280B2728001109CD /* DesignApp.swift */,
 				09E27DA9280B2728001109CD /* ContentView.swift */,
+				09E27DBB280C0EBF001109CD /* AccountView.swift */,
 				09E27DB7280C0728001109CD /* Styles.swift */,
 				09E27DAB280B272B001109CD /* Assets.xcassets */,
 				09E27DAD280B272B001109CD /* Preview Content */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E27DBC280C0EBF001109CD /* AccountView.swift in Sources */,
 				09E27DB8280C0728001109CD /* Styles.swift in Sources */,
 				09E27DAA280B2728001109CD /* ContentView.swift in Sources */,
 				09E27DA8280B2728001109CD /* DesignApp.swift in Sources */,
