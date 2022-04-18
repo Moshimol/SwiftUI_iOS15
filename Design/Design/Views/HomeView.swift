@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  Design
 //
-//  Created by lushitong on 2022/4/17.
+//  Created by lushitong on 2022/4/18.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
             Spacer()
@@ -42,10 +42,10 @@ struct ContentView: View {
         .padding(.vertical, 20)
         .frame(height: 350.0)
         .background(.ultraThinMaterial, in:RoundedRectangle(cornerRadius: 30, style:.continuous))
-//        .cornerRadius(30)
-//        .mask(RoundedRectangle(cornerSize: 30, style:.continuous))
+    //        .cornerRadius(30)
+    //        .mask(RoundedRectangle(cornerSize: 30, style:.continuous))
         .shadow(color: Color("Shadow").opacity(0.3), radius: 10, x: 0, y: 10)
-//        .modifier(StorkeStyle())
+    //        .modifier(StorkeStyle())
         .strokeStyle()
         .padding(.horizontal, 20.0)
         .background(
@@ -59,15 +59,12 @@ struct ContentView: View {
                 .frame(height: 230)
                 .offset(x: 32, y: -80)
         )
-        
-        
     }
+    
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-            
-            
+        HomeView()
     }
 }
