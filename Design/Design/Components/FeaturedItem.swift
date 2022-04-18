@@ -8,10 +8,25 @@
 import SwiftUI
 
 struct FeaturedItem: View {
+    
+    /*
+     var title: String
+     var subtitle: String
+     var text: String
+     var image: String
+     var logo: String
+     */
+    
+    var title: String
+    var subtitle: String
+    var text: String
+    var image: String
+    var logo: String
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
             Spacer()
-            Image("Logo 2")
+            Image(logo)
                 .resizable(resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 26.0, height: 26.0)
@@ -20,18 +35,18 @@ struct FeaturedItem: View {
                 .background(.ultraThinMaterial, in:RoundedRectangle(cornerRadius: 20, style:.continuous))
                 .strokeStyle(cornerRadius: 16)
             
-            Text("SwiftUI for iOS 15")
+            Text(title)
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundStyle(.linearGradient(colors: [.primary, .primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing))
                 .lineLimit(1)
             
-            Text("20 sections - 3 hours".uppercased())
+            Text(subtitle.uppercased())
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .foregroundColor(.secondary)
             
-            Text("Build an iOS app for iOS 15 with custom layouts, animations and ...")
+            Text(text)
                 .font(.footnote)
                 .multilineTextAlignment(.leading)
                 .lineLimit(2)
@@ -48,21 +63,19 @@ struct FeaturedItem: View {
         //        .modifier(StorkeStyle())
         .strokeStyle()
         .padding(.horizontal, 20.0)
-        .background(
-            Image("Blob 1")
-                .offset(x: 250, y: -100)
-        )
+        
         .overlay(
-            Image("Illustration 5")
+            Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 230)
+                .offset(x: 32, y: -80)
         )
     }
 }
 
 struct FeaturedItem_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturedItem()
+        FeaturedItem(title: "1", subtitle: "1", text: "1", image: "1", logo: "1")
     }
 }

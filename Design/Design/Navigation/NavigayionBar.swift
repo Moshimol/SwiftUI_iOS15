@@ -9,16 +9,21 @@ import SwiftUI
 
 struct NavigayionBar: View {
     var navTitle = ""
+    @Binding var hasScrolled:Bool
+    
     var body: some View {
         ZStack {
             Color.clear
                 .background(.ultraThinMaterial)
                 .blur(radius: 10)
+                .opacity(hasScrolled ? 1 : 0)
             
             Text(navTitle)
-                .font(.largeTitle.weight(.bold))
+                .animatableFont(size: hasScrolled ? 22 : 34, weight: .bold)
                 .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .leading)
                 .padding(.leading, 20)
+                .padding(.top, 20)
+                .offset(y:hasScrolled ? -4 : 0)
             
             HStack (spacing: 16){
                 Image(systemName: "magnifyingglass")
@@ -38,15 +43,17 @@ struct NavigayionBar: View {
             }
             .frame(maxWidth:.infinity, alignment: .trailing)
             .padding(.trailing, 20)
+            .padding(.top, 20)
+            .offset(y:hasScrolled ? -4 : 0)
         }
-        .frame(height: 70)
+        .frame(height: hasScrolled ? 44 : 70)
         .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
     }
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigayionBar(navTitle: "title")
+        NavigayionBar(navTitle: "title", hasScrolled: .constant(false))
             .previewDevice("iPhone 13")
     }
 }
