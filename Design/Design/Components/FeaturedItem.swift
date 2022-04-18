@@ -59,18 +59,10 @@ struct FeaturedItem: View {
         .background(.ultraThinMaterial, in:RoundedRectangle(cornerRadius: 30, style:.continuous))
         //        .cornerRadius(30)
         //        .mask(RoundedRectangle(cornerSize: 30, style:.continuous))
-        .shadow(color: Color("Shadow").opacity(0.3), radius: 10, x: 0, y: 10)
+        
         //        .modifier(StorkeStyle())
         .strokeStyle()
         .padding(.horizontal, 20.0)
-        
-        .overlay(
-            Image(image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 230)
-                .offset(x: 32, y: -80)
-        )
     }
 }
 
