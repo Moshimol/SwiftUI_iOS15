@@ -17,16 +17,12 @@ struct FeaturedItem: View {
      var logo: String
      */
     
-    var title: String
-    var subtitle: String
-    var text: String
-    var image: String
-    var logo: String
+    var course:Course = courses[0]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
             Spacer()
-            Image(logo)
+            Image(course.logo)
                 .resizable(resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 26.0, height: 26.0)
@@ -35,18 +31,18 @@ struct FeaturedItem: View {
                 .background(.ultraThinMaterial, in:RoundedRectangle(cornerRadius: 20, style:.continuous))
                 .strokeStyle(cornerRadius: 16)
             
-            Text(title)
+            Text(course.title)
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundStyle(.linearGradient(colors: [.primary, .primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing))
                 .lineLimit(1)
             
-            Text(subtitle.uppercased())
+            Text(course.subtitle.uppercased())
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .foregroundColor(.secondary)
             
-            Text(text)
+            Text(course.text)
                 .font(.footnote)
                 .multilineTextAlignment(.leading)
                 .lineLimit(2)
@@ -57,8 +53,7 @@ struct FeaturedItem: View {
         .padding(.vertical, 20)
         .frame(height: 350.0)
         .background(.ultraThinMaterial, in:RoundedRectangle(cornerRadius: 30, style:.continuous))
-        //        .cornerRadius(30)
-        //        .mask(RoundedRectangle(cornerSize: 30, style:.continuous))
+        .mask(RoundedRectangle(cornerRadius: 30, style:.continuous))
         
         //        .modifier(StorkeStyle())
         .strokeStyle()
@@ -68,6 +63,6 @@ struct FeaturedItem: View {
 
 struct FeaturedItem_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturedItem(title: "1", subtitle: "1", text: "1", image: "1", logo: "1")
+        FeaturedItem()
     }
 }
