@@ -67,6 +67,7 @@ struct HomeView: View {
         }
     }
     
+    
     var scrollerDetection: some View {
         GeometryReader { proxy in
             Color.clear.preference(key: ScrollerPreferenceKey.self, value: proxy.frame(in: .named("scroll")).minY)
