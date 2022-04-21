@@ -27,6 +27,7 @@
 		09EB6081280F06F300D93828 /* CourseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB6080280F06F300D93828 /* CourseItem.swift */; };
 		09EB6083280F07F600D93828 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB6082280F07F600D93828 /* CourseView.swift */; };
 		09FAF488281045F50059D7B0 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FAF487281045F50059D7B0 /* Animations.swift */; };
+		09FAF48A28105B8A0059D7B0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FAF48928105B8A0059D7B0 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		09EB6080280F06F300D93828 /* CourseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseItem.swift; sourceTree = "<group>"; };
 		09EB6082280F07F600D93828 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
 		09FAF487281045F50059D7B0 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		09FAF48928105B8A0059D7B0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				09DB1F57280C69B300BA986A /* Tab.swift */,
 				09219078280D9D610089D70A /* PreferenceKeys.swift */,
 				0921907C280DA6FB0089D70A /* Course.swift */,
+				09FAF48928105B8A0059D7B0 /* Model.swift */,
 			);
 			path = Mode;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				09219075280D961E0089D70A /* FeaturedItem.swift in Sources */,
 				09FAF488281045F50059D7B0 /* Animations.swift in Sources */,
 				09219079280D9D610089D70A /* PreferenceKeys.swift in Sources */,
+				09FAF48A28105B8A0059D7B0 /* Model.swift in Sources */,
 				09DB1F56280C647800BA986A /* TabBar.swift in Sources */,
 				0921907B280DA2720089D70A /* AnimatableFontModifier.swift in Sources */,
 			);

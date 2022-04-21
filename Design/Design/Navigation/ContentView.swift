@@ -18,6 +18,8 @@ struct ContentView: View {
      
      */
     @AppStorage("selectTab") var selectTab: Tab = .home
+    @EnvironmentObject var model: Model
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             switch selectTab {
@@ -31,6 +33,7 @@ struct ContentView: View {
                     AccountView()
             }
             TabBar()
+                .offset(y:model.showDetails ? 200 : 0)
         }
         .safeAreaInset(edge: .bottom) {
             Color.clear.frame(height: 44)
@@ -41,6 +44,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(Model())
             
             
     }
