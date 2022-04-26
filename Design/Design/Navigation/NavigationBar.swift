@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavigayionBar: View {
+struct NavigationBar: View {
     var navTitle = ""
     @Binding var hasScrolled:Bool
     
@@ -53,7 +53,7 @@ struct NavigayionBar: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigayionBar(navTitle: "title", hasScrolled: .constant(false))
+        NavigationBar(navTitle: "title", hasScrolled: .constant(false))
             .previewDevice("iPhone 13")
     }
 }

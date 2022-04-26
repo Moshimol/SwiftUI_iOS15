@@ -7,15 +7,14 @@
 import SwiftUI
 
 struct CourseView: View {
-    var namespace:Namespace.ID
-    
-    @Binding var show:Bool
+    var namespace: Namespace.ID
+    var course: Course = courses[0]
+    @Binding var show: Bool
     @State var appear = [false, false, false]
-    @EnvironmentObject var mode:Model
+    @EnvironmentObject var model: Model
     @State var viewState: CGSize = .zero
-    @State var isDrag : Bool = true
+    @State var isDraggable = true
     
-    var course:Course = courses[0]
     var body: some View {
         ZStack {
             ScrollView {
@@ -26,14 +25,15 @@ struct CourseView: View {
                     .padding(.bottom, 200)
                     .opacity(appear[2] ? 1 : 0)
             }
-            .background(Color(course.background))
-            mask(RoundedRectangle(cornerRadius: viewState.width / 3, style: .continuous))
+            .background(Color("Background"))
+            .mask(RoundedRectangle(cornerRadius: viewState.width / 3, style: .continuous))
             .shadow(color: .black.opacity(0.3), radius: 30, x: 0, y: 10)
             .scaleEffect(viewState.width / -500 + 1)
             .background(.black.opacity(viewState.width / 500))
             .background(.ultraThinMaterial)
-            .gesture(isDrag ? drag : nil)
+            .gesture(isDraggable ? drag : nil)
             .ignoresSafeArea()
+            
             button
         }
         .onAppear {
@@ -44,77 +44,45 @@ struct CourseView: View {
         }
     }
     
-    
-    func fadeIn() {
-        withAnimation(.easeInOut.delay(0.3)) {
-            appear[0] = true
-        }
-        withAnimation(.easeInOut.delay(0.4)) {
-            appear[1] = true
-        }
-        withAnimation(.easeInOut.delay(0.5)) {
-            appear[2] = true
-        }
-    }
-    
-    
-    func fadeOut() {
-        appear[0] = false
-        appear[1] = false
-        appear[2] = false
-    }
-    
-    func close() {
-        withAnimation(.closeCard.delay(0.3)) {
-            show.toggle()
-            mode.showDetails.toggle()
-        }
-        withAnimation(.closeCard) {
-            viewState = .zero
-        }
-        isDrag = false
-    }
-    
-    var drag: some Gesture {
-        DragGesture(minimumDistance: 30, coordinateSpace: .local)
-            .onChanged { value in
-                guard value.translation.width > 0 else { return }
-                if value.startLocation.x < 100 {
-                    withAnimation(.closeCard) {
-                        viewState = value.translation
-                    }
-
-                }
-                if viewState.width > 200 {
-                    close()
-                }
+    var cover: some View {
+        GeometryReader { proxy in
+            let scrollY = proxy.frame(in: .global).minY
+            
+            VStack {
+                Spacer()
             }
-            .onEnded { value in
-                if viewState.width > 80 {
-                    close()
-                } else {
-                    withAnimation(.closeCard) {
-                        viewState = .zero
-                    }
-                }
-            }
-    }
-    var button: some View {
-        Button {
-            withAnimation(.closeCard) {
-                show.toggle()
-                mode.showDetails.toggle()
-            }
-        } label: {
-            Image(systemName: "xmark")
-                .font(.body.weight(.bold))
-                .foregroundColor(.secondary)
-                .padding(8)
-                .background(.ultraThinMaterial, in: Circle())
+            .frame(maxWidth: .infinity)
+            .frame(height: scrollY > 0 ? 500 + scrollY : 500)
+            .foregroundStyle(.black)
+            .background(
+                Image(course.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(20)
+                    .frame(maxWidth: 500)
+                    .matchedGeometryEffect(id: "image\(course.id)", in: namespace)
+                    .offset(y: scrollY > 0 ? scrollY * -0.8 : 0)
+            )
+            .background(
+                Image(course.background)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
+                    .offset(y: scrollY > 0 ? -scrollY : 0)
+                    .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
+                    .blur(radius: scrollY / 10)
+            )
+            .mask(
+                RoundedRectangle(cornerRadius: appear[0] ? 0 : 30, style: .continuous)
+                    .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
+                    .offset(y: scrollY > 0 ? -scrollY : 0)
+            )
+            .overlay(
+                overlayContent
+                    .offset(y: scrollY > 0 ? scrollY * -0.6 : 0)
+            )
         }
-        .frame(maxWidth:.infinity, maxHeight:.infinity, alignment: .topTrailing)
-        .padding(20)
-        .ignoresSafeArea()
+        .frame(height: 500)
     }
     
     var content: some View {
@@ -132,49 +100,25 @@ struct CourseView: View {
         .padding(20)
     }
     
-    var cover: some View {
-        GeometryReader  { proxy in
-            let scrollY = proxy.frame(in: .global).minY
-            
-            VStack {
-                Spacer()
+    var button: some View {
+        Button {
+            withAnimation(.closeCard) {
+                show.toggle()
+                model.showDetails.toggle()
             }
-            
-            .frame(maxWidth: .infinity)
-            .frame(height: scrollY > 0 ? 500 :500 + scrollY)
-            .foregroundStyle(.black)
-            .background(
-                Image(course.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .matchedGeometryEffect(id: "image\(course.id)", in: namespace)
-                    .offset(y: scrollY > 0 ? -scrollY * 0.8 : 0)
-            )
-            .background(
-                Image(course.background)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
-                    .offset(y: scrollY > 0  ? -scrollY : 0)
-                    .scaleEffect(scrollY > 0 ? scrollY/1000 + 1 : 1)
-                    .blur(radius: scrollY > 0 ? scrollY / 10 : 1)
-            )
-            .mask(
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
-                    .offset(y: scrollY > 0 ? -scrollY :  0)
-            )
-            .overlay(
-                overContent
-                    .offset(y: scrollY > 0 ?  scrollY * 0.6 : 0)
-            )
-            
+        } label: {
+            Image(systemName: "xmark")
+                .font(.body.weight(.bold))
+                .foregroundColor(.secondary)
+                .padding(8)
+                .background(.ultraThinMaterial, in: Circle())
         }
-        .frame(height: 500)
-        
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+        .padding(20)
+        .ignoresSafeArea()
     }
     
-    var overContent: some View {
+    var overlayContent: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(course.title)
                 .font(.largeTitle.weight(.bold))
@@ -212,13 +156,70 @@ struct CourseView: View {
             .offset(y: 250)
             .padding(20)
     }
+    
+    var drag: some Gesture {
+        DragGesture(minimumDistance: 30, coordinateSpace: .local)
+            .onChanged { value in
+                guard value.translation.width > 0 else { return }
+                
+                if value.startLocation.x < 100 {
+                    withAnimation(.closeCard) {
+                        viewState = value.translation
+                    }
+                }
+                
+                if viewState.width > 120 {
+                    close()
+                }
+            }
+            .onEnded { value in
+                if viewState.width > 80 {
+                    close()
+                } else {
+                    withAnimation(.closeCard) {
+                        viewState = .zero
+                    }
+                }
+            }
+    }
+    
+    func fadeIn() {
+        withAnimation(.easeOut.delay(0.3)) {
+            appear[0] = true
+        }
+        withAnimation(.easeOut.delay(0.4)) {
+            appear[1] = true
+        }
+        withAnimation(.easeOut.delay(0.5)) {
+            appear[2] = true
+        }
+    }
+    
+    func fadeOut() {
+        appear[0] = false
+        appear[1] = false
+        appear[2] = false
+    }
+    
+    func close() {
+        withAnimation(.closeCard.delay(0.3)) {
+            show.toggle()
+            model.showDetails.toggle()
+        }
+        
+        withAnimation(.closeCard) {
+            viewState = .zero
+        }
+        
+        isDraggable = false
+    }
 }
 
 struct CourseView_Previews: PreviewProvider {
     @Namespace static var namespace
+    
     static var previews: some View {
         CourseView(namespace: namespace, show: .constant(true))
-            .previewDevice("iPhone 13")
             .environmentObject(Model())
     }
 }
