@@ -13,6 +13,7 @@ struct CourseView: View {
     @State var appear = [false, false, false]
     @EnvironmentObject var mode:Model
     @State var viewState: CGSize = .zero
+    @State var isDrag : Bool = true
     
     var course:Course = courses[0]
     var body: some View {
@@ -31,19 +32,7 @@ struct CourseView: View {
             .scaleEffect(viewState.width / -500 + 1)
             .background(.black.opacity(viewState.width / 500))
             .background(.ultraThinMaterial)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        guard value.translation.width > 0 else { return }
-                        
-                        viewState = value.translation
-                    }
-                    .onEnded { value in
-                        withAnimation(.closeCard) {
-                            viewState = .zero
-                        }
-                    }
-            )
+            .gesture(isDrag ? drag : nil)
             .ignoresSafeArea()
             button
         }
@@ -75,6 +64,41 @@ struct CourseView: View {
         appear[2] = false
     }
     
+    func close() {
+        withAnimation(.closeCard.delay(0.3)) {
+            show.toggle()
+            mode.showDetails.toggle()
+        }
+        withAnimation(.closeCard) {
+            viewState = .zero
+        }
+        isDrag = false
+    }
+    
+    var drag: some Gesture {
+        DragGesture(minimumDistance: 30, coordinateSpace: .local)
+            .onChanged { value in
+                guard value.translation.width > 0 else { return }
+                if value.startLocation.x < 100 {
+                    withAnimation(.closeCard) {
+                        viewState = value.translation
+                    }
+
+                }
+                if viewState.width > 200 {
+                    close()
+                }
+            }
+            .onEnded { value in
+                if viewState.width > 80 {
+                    close()
+                } else {
+                    withAnimation(.closeCard) {
+                        viewState = .zero
+                    }
+                }
+            }
+    }
     var button: some View {
         Button {
             withAnimation(.closeCard) {
