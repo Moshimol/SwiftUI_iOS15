@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0916504628733FBA0007BC96 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916504528733FBA0007BC96 /* Suggestion.swift */; };
 		0921906E280D909F0089D70A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921906D280D909F0089D70A /* HomeView.swift */; };
 		09219075280D961E0089D70A /* FeaturedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09219074280D961E0089D70A /* FeaturedItem.swift */; };
 		09219077280D97970089D70A /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09219076280D97970089D70A /* NavigationBar.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0916504528733FBA0007BC96 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		0921906D280D909F0089D70A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		09219074280D961E0089D70A /* FeaturedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedItem.swift; sourceTree = "<group>"; };
 		09219076280D97970089D70A /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				09219078280D9D610089D70A /* PreferenceKeys.swift */,
 				0921907C280DA6FB0089D70A /* Course.swift */,
 				09FAF48928105B8A0059D7B0 /* Model.swift */,
+				0916504528733FBA0007BC96 /* Suggestion.swift */,
 			);
 			path = Mode;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				09E27DBC280C0EBF001109CD /* AccountView.swift in Sources */,
 				09EB6083280F07F600D93828 /* CourseView.swift in Sources */,
 				09219077280D97970089D70A /* NavigationBar.swift in Sources */,
+				0916504628733FBA0007BC96 /* Suggestion.swift in Sources */,
 				09E27DB8280C0728001109CD /* Styles.swift in Sources */,
 				09EB607F280EFAF800D93828 /* MatchedView.swift in Sources */,
 				09E27DAA280B2728001109CD /* ContentView.swift in Sources */,
